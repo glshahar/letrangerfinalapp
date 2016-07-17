@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>Designers Page</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+    <script type="text/javascript" src="js/lib/angular/angular.min.js"></script>
+    <script src = "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-cookies.js"></script>
+    <script type="text/javascript" src="js/clientSide.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body ng-controller="myCtrl">
+
+<header>
+<div id="slider1_container">
+      <div id="slider1" u="slides" div u="slides">
+          <div><img src="images/headerIMG1.jpg"/></div>
+          <div><img src="images/headerIMG2.jpg"/></div>
+      </div>
+    <nav id="navigation">
+      <ul>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="/category.html#/Category/All">SHOP</a></li>
+        <li><a href="/favorits.html#/Favorits">FAVOURITES</a></li>
+        <li><a href="articles.html">ARTICLES</a></li>
+        <li><a href="about.html">ABOUT</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div id="defaultWrapper">
+    <section id="logo"></section>
+    <div id="rightWrapper">
+
+        <section class="boxSubTitle">
+            <h3 class="headTitle">Favorites</h3>
+            <section id="sortingBox">
+                 <h4>Sort:</h4>
+                 <a href="#" ng-click="sortField='like_counter'; reverse =!reverse">Likes</a>
+                 <a href="#" ng-click="sortField='-name'; reverse =!reverse">Name</a>
+                 <a href="#" ng-click="sortField='price'; reverse =!reverse">Price</a>
+                 <a href="#" ng-click="sortField='new'; reverse =!reverse">New</a>
+            </section>
+        </section>
+
+        <div class="clear"></div>
+        <div id="dynamicWrapper">  
+                <!--<h2 class="headTitle">Favorits</h2>-->
+                <section id="itemBox" ng-repeat="item in todo.likes | orderBy: sortField :reverse">
+                   <section class="imgFrame">
+                         <img class="favoriteImg" src="images/products/{{item.img_url}}"">
+                   </section>
+                   <h3>{{item.name}}</h3>
+                   <h5>{{item.designer}} - {{item.price}} $</h5> 
+                   <a href="" ng-click="incompleteCount()"><img class="likeImg" src="images/like.png""></a>
+                   <h4>{{item.like_counter}}</h4>
+                   <span ng-hide="item.new == false"><img class="newLogo" src="images/new1.png""></span>  
+                </section>
+        </div>
+
+
+    <h1 ng-show="connected==false">You Need To Log In</h1>
+    <a href="statistics.html" id="statisticsBtn" class="userEmail" ng-show="isDesigner">Statistics</a>
+    <a href="admin.html" id="adminBtn" class="userEmail" ng-show="isDesigner">Admin</a>
+    </div>
+
+<div class="openfooterblack" id="openfooter" ng-show="footer==1">
+
+    <section id="footerPanel">
+        <section id="emptyPanel"></section>
+        <section class ="loginPanel">
+            <form name="login">
+                 <ul>
+                    <input class="inputLogin" type="email" name="email" ng-model="usermail" required></li>
+                    <li><label for="usermail">User Name:</label></li>            
+                    <div class="clear"></div>
+                    <input class="inputLogin" type="password" name="password" ng-model="password" required></li>
+                    <li><label for="password">Password:</label></li>
+                </ul>
+                <div class="clear"></div>
+                <a class="forgotPassBtm" href="#">Forgot your Password</a>
+                <a class="registrationBtm" href="#">Registration</a>
+                <div class="clear"></div>
+                <input type="reset" class="resetbtn" value="">
+                <!--<a href="JavaScript:checkLogin(email,password)" class="submitbtn"></a>-->
+                <button ng-click="checkLogin()" class="submitbtn">login</button>
+            </form>
+        </section>
+        <section class ="categoryPanel">
+            <label id="categoryLabel">CATEGORY</label>
+                  <div ng-repeat="category in todo.categories | orderBy:'name'">
+                    <section class="categoryName"><a href="/category.html#/Category/{{category.name}}">{{category.name}}</a>
+                    </section>
+                  </div>
+        </section>
+    </section>
+
+</div>
+
+<footer>
+    <div id="login">
+        <section class="loginbtnfooter">
+           <a ng-click="footer=!footer" href="#"></a>
+        </section>
+        <section class="logoutbtnfooter">
+            <a ng-click="logout()" target="_blank"></a>
+        </section>
+        <section class="usermailfooter">
+           <a href="favorits.html" class="userEmail" ng-show="connected">{{usermail}}</a>
+        </section>
+        <section class="shopfooter">
+           <a href="category.html#/Category/All" class="userEmail"></a>
+        </section>
+    </div>
+</footer>
+
+</body>
+</html>
