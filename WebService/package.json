@@ -1,0 +1,27 @@
+{
+  "name": "gal",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "ejs": "^2.4.2",
+    "express": "^4.13.4",
+    "jade": "^1.11.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/glshahar/wsfinalproject.git"
+  },
+  "bugs": {
+    "url": "https://github.com/glshahar/wsfinalproject/issues"
+  },
+  "homepage": "https://github.com/glshahar/wsfinalproject#readme",
+  "description": ""
+}
